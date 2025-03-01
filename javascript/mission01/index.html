@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css"
 </head>
@@ -12,26 +11,38 @@
         Food Menu
     </h1>
     <div class="button-container">
-        <button class="food-button">All</button>
-        <button class="food-button">Breakfast</button>
-        <button class="food-button">Lunch</button>
-        <button class="food-button">Shakes</button>
-        <button class="food-button">Dinner</button>
+        <button class="food-button" data-category="all">All</button>
+        <button class="food-button" data-category="breakfast">Breakfast</button>
+        <button class="food-button" data-category="lunch">Lunch</button>
+        <button class="food-button" data-category="shakes">Shakes</button>
+        <button class="food-button" data-category="dinner">Dinner</button>
     </div>
-    <div class="image-container">
-        <div class="column">
+    <div class="menu-items">
+        <div class="menu-item" data-category="breakfast">
             <img class="food-img" src="images/food1.jpg"/>
+        </div>
+        <div class="menu-item" data-category="lunch">
             <img class="food-img" src="images/food2.jpg"/>
+        </div>
+        <div class="menu-item" data-category="shakes">
             <img class="food-img" src="images/food3.jpg"/>
         </div>
-        <div class="column">
+        <div class="menu-item" data-category="dinner">
             <img class="food-img" src="images/bread.jpg"/>
+        </div>
+        <div class="menu-item" data-category="breakfast">
             <img class="food-img" src="images/breakfast.jpg"/>
+        </div>
+        <div class="menu-item" data-category="lunch">
             <img class="food-img" src="images/cake.jpg"/>
         </div>
-        <div class="column">
+        <div class="menu-item" data-category="shakes">
             <img class="food-img" src="images/potato.jpg"/>
+        </div>
+        <div class="menu-item" data-category="dinner">
             <img class="food-img" src="images/shake.jpg"/>
+        </div>
+        <div class="menu-item" data-category="breakfast">
             <img class="food-img" src="images/salad.jpg"/>
         </div>
     </div>

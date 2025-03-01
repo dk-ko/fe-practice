@@ -24,21 +24,20 @@
     background-color: aliceblue;
 }
 
-.food-container {
-    display: flex;
-    justify-content: center;
-}
-
-.image-container {
-    display: flex;
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     gap: 40px;
     margin-top: 50px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.column {
+.menu-item {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 20px;
 }
 
