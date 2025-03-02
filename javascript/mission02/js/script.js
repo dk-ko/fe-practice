@@ -27,7 +27,10 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
     let computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+    let playResult = playRound(playerSelection, computerSelection);
+    console.log(playResult);
+    document.querySelector('#result').style.display = 'block';
+    document.querySelector('#result-message').textContent = playResult;
 
     if (roundCount === 0) {
         endGame();
@@ -36,14 +39,17 @@ function game(playerSelection) {
 
 function endGame() {
     if (playerWinCount > computerWinCount) {
-        console.log('플레이어 승리');
-        document.querySelector('#result').textContent = '플레이어 승리';
+        console.log('게임에서 이겼습니다.');
+        document.querySelector('#result').style.display = 'none';
+        document.querySelector('#result-message').textContent = '게임에서 이겼습니다.';
     } else if (playerWinCount < computerWinCount) {
-        console.log('컴퓨터 승리');
-        document.querySelector('#result').textContent = '컴퓨터 승리';
+        console.log('게임에서 졌습니다.');
+        document.querySelector('#result').style.display = 'none';
+        document.querySelector('#result-message').textContent = '게임에서 졌습니다.';
     } else {
-        console.log('무승부');
-        document.querySelector('#result').textContent = '무승부';
+        console.log('무승부입니다.');
+        document.querySelector('#result').style.display = 'none';
+        document.querySelector('#result-message').textContent = '무승부입니다.';
     }
 }
 
