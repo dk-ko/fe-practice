@@ -42,15 +42,19 @@ function endGame() {
         console.log('게임에서 이겼습니다.');
         document.querySelector('#result').style.display = 'none';
         document.querySelector('#result-message').textContent = '게임에서 이겼습니다.';
-    } else if (playerWinCount < computerWinCount) {
+    } 
+    if (playerWinCount < computerWinCount) {
         console.log('게임에서 졌습니다.');
         document.querySelector('#result').style.display = 'none';
         document.querySelector('#result-message').textContent = '게임에서 졌습니다.';
-    } else {
+    } 
+    if (playerWinCount === computerWinCount) {
         console.log('무승부입니다.');
         document.querySelector('#result').style.display = 'none';
         document.querySelector('#result-message').textContent = '무승부입니다.';
     }
+
+    document.querySelector('#reset').style.display = 'block';
 }
 
 document.querySelectorAll('.player-choice').forEach((button) => {
@@ -59,4 +63,15 @@ document.querySelectorAll('.player-choice').forEach((button) => {
         document.querySelector('#round-count').textContent = roundCount;
         game(button.id);
     });
+});
+
+document.querySelector('#reset').addEventListener('click', function() {
+    playerWinCount = 0;
+    computerWinCount = 0;
+    roundCount = 10;
+    document.querySelector('#player-win-count').textContent = playerWinCount;
+    document.querySelector('#computer-win-count').textContent = computerWinCount;
+    document.querySelector('#round-count').textContent = roundCount;
+    document.querySelector('#result-message').textContent = '';
+    document.querySelector('#reset').style.display = 'none';
 });
