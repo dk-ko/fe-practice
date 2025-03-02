@@ -16,32 +16,41 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
         playerWinCount++;
+        document.querySelector('#player-win-count').textContent = playerWinCount;
         return '플레이어 승리';
     } else {
         computerWinCount++;
+        document.querySelector('#computer-win-count').textContent = computerWinCount;
         return '컴퓨터 승리';
     }
 }
 
-function playerPlay() {
-    document.querySelectorAll('.player-choice').forEach((button) => {
-        button.addEventListener('click', function() {
-            return button.id;
-        });
-    });
+function game(playerSelection) {
+    let computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+
+    if (roundCount === 0) {
+        endGame();
+    }
 }
 
-function game() {
-    for (let i = 0; i < roundCount; i++) {
-        let playerSelection = playerPlay();
-        let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+function endGame() {
     if (playerWinCount > computerWinCount) {
         console.log('플레이어 승리');
+        document.querySelector('#result').textContent = '플레이어 승리';
     } else if (playerWinCount < computerWinCount) {
         console.log('컴퓨터 승리');
+        document.querySelector('#result').textContent = '컴퓨터 승리';
     } else {
         console.log('무승부');
+        document.querySelector('#result').textContent = '무승부';
     }
 }
+
+document.querySelectorAll('.player-choice').forEach((button) => {
+    button.addEventListener('click', function() {
+        roundCount--;
+        document.querySelector('#round-count').textContent = roundCount;
+        game(button.id);
+    });
+});
