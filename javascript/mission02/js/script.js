@@ -59,6 +59,10 @@ function endGame() {
 
 document.querySelectorAll('.player-choice').forEach((button) => {
     button.addEventListener('click', function() {
+        if (roundCount === 0) {
+            alert('게임이 끝났습니다. 게임을 다시 시작하려면 [다시 시작] 버튼을 누르세요.');
+            return;
+        }
         roundCount--;
         document.querySelector('#round-count').textContent = roundCount;
         game(button.id);
