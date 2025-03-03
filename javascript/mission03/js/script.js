@@ -27,13 +27,6 @@ function quiz() {
   const answers = [correctAnswer, incorrectAnswers];
   updateAnswerUI(answers);
 
-  if (gameCount === 0) {
-    nextButton.style.display = "none";
-    resetButton.style.display = "block";
-    gameCount = 3;
-    return;
-  }
-
   answerDivs.forEach((answerDiv) => {
     answerDiv.addEventListener("click", () => {
       if (parseInt(answerDiv.textContent) === correctAnswer) {
@@ -58,6 +51,13 @@ function quiz() {
   nextButton.addEventListener("click", () => {
     reset();
   });
+
+  if (gameCount === 0) {
+    nextButton.style.display = "none";
+    resetButton.style.display = "block";
+    gameCount = 3;
+    return;
+  }
 }
 
 function updateQuestionUI(questionText) {
