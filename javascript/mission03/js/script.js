@@ -2,11 +2,13 @@ const questionDiv = document.querySelector("#question");
 const answerDivs = document.querySelectorAll(".answer");
 const resetButton = document.querySelector(".reset-button");
 const nextButton = document.querySelector(".next-button");
+
 let gameCount = 3;
 let correctAnswer = 0;
 let incorrectAnswers = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
+  initEventListeners();
   quiz();
 });
 
@@ -18,61 +20,51 @@ function generateQuestion() {
   const firstNumber = getRandomNumber();
   const secondNumber = getRandomNumber();
 
-  const expression = `${firstNumber} + ${secondNumber} = ?`;
-  updateQuestionUI(expression);
+  updateQuestionUI(`${firstNumber} + ${secondNumber} = ?`);
   return firstNumber + secondNumber;
 }
 
 function quiz() {
+  console.log(`게임 진행중 (남은 라운드: ${gameCount})`);
   correctAnswer = generateQuestion();
   incorrectAnswers = getRandomNumber();
-  const answers = [correctAnswer, incorrectAnswers];
-  updateAnswerUI(answers);
+  updateAnswerUI([correctAnswer, incorrectAnswers]);
 
   nextButton.style.display = "none";
-
-  if (gameCount > 0) {
-    console.log("게임 진행중");
-  } else {
-    console.log("게임이 끝났습니다.");
-    resetButton.style.display = "block";
-    return;
-  }
 }
 
-answerDivs.forEach((answerDiv) => {
-  answerDiv.addEventListener("click", () => {
-    if (parseInt(answerDiv.textContent) === correctAnswer) {
-      document.body.style.backgroundColor = "green";
-    } else {
-      document.body.style.backgroundColor = "red";
-    }
-
-    answerDivs.forEach((div) => {
-      if (parseInt(div.textContent) === correctAnswer) {
-        div.style.backgroundColor = "green";
-      } else {
-        div.style.backgroundColor = "red";
-      }
-    });
-
-    if (gameCount > 1) {
-      console.log(gameCount);
-      console.log("게임중");
-      nextButton.style.display = "block";
-    } else {
-      console.log(gameCount);
-      console.log("게임종료");
-      nextButton.style.display = "none";
-      resetButton.style.display = "block";
-    }
+function initEventListeners() {
+  answerDivs.forEach((answerDiv) => {
+    answerDiv.addEventListener("click", handleAnswerClick);
   });
-});
 
-nextButton.addEventListener("click", () => {
-  gameCount--;
-  next();
-});
+  nextButton.addEventListener("click", () => {
+    gameCount--;
+    next();
+  });
+
+  resetButton.addEventListener("click", () => {
+    reset();
+  });
+}
+
+function handleAnswerClick(event) {
+  const selectedAnswer = parseInt(event.target.textContent);
+  document.body.style.backgroundColor =
+    selectedAnswer === correctAnswer ? "green" : "red";
+
+  answerDivs.forEach((div) => {
+    div.style.backgroundColor =
+      parseInt(div.textContent) === correctAnswer ? "green" : "red";
+  });
+
+  if (gameCount > 1) {
+    nextButton.style.display = "block";
+  } else {
+    nextButton.style.display = "none";
+    resetButton.style.display = "block";
+  }
+}
 
 function updateQuestionUI(questionText) {
   questionDiv.textContent = questionText;
@@ -91,13 +83,7 @@ function shuffleArray(array) {
 }
 
 function next() {
-  document.body.style.backgroundColor = "gainsboro";
-  answerDivs.forEach((div) => {
-    div.style.backgroundColor = "gray";
-  });
-
-  nextButton.style.display = "none";
-
+  resetUI();
   if (gameCount > 0) {
     quiz();
   } else {
@@ -106,19 +92,15 @@ function next() {
 }
 
 function reset() {
-  document.body.style.backgroundColor = "gainsboro";
-  answerDivs.forEach((div) => {
-    div.style.backgroundColor = "gray";
-  });
-
-  nextButton.style.display = "none";
-  resetButton.style.display = "none";
-
   gameCount = 3;
+  resetUI();
+  resetButton.style.display = "none";
   quiz();
 }
 
-resetButton.addEventListener("click", () => {
+function resetUI() {
+  document.body.style.backgroundColor = "gainsboro";
+  answerDivs.forEach((div) => (div.style.backgroundColor = "gray"));
+  nextButton.style.display = "none";
   resetButton.style.display = "none";
-  reset();
-});
+}
