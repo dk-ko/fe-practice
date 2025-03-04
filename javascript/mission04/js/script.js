@@ -1,32 +1,17 @@
 const bookForm = document.querySelector("#book-form");
 const bookList = document.querySelector("#book-list");
 const deleteBtn = document.querySelector(".delete-btn");
+const form = document.querySelector("form");
 
-function showSuccessMessage() {
-  console.log("Success message");
-  const successMessage = document.createElement("div");
-  successMessage.className = "success-message";
-  successMessage.textContent = "책이 추가되었습니다";
+function showMessage(type, text) {
+  const message = document.createElement("div");
+  message.className = `${type}-message`;
+  message.textContent = text;
 
-  const form = document.querySelector("form");
-  form.parentNode.insertBefore(successMessage, form);
-
-  setTimeout(() => {
-    successMessage.remove();
-  }, 2000);
-}
-
-function showDeleteMessage() {
-  console.log("Delete message");
-  const deleteMessage = document.createElement("div");
-  deleteMessage.className = "delete-message";
-  deleteMessage.textContent = "책이 삭제되었습니다";
-
-  const form = document.querySelector("form");
-  form.parentNode.insertBefore(deleteMessage, form);
+  form.parentNode.insertBefore(message, form);
 
   setTimeout(() => {
-    deleteMessage.remove();
+    message.remove();
   }, 2000);
 }
 
@@ -55,20 +40,18 @@ bookForm.addEventListener("submit", (event) => {
   bookRow.appendChild(deletebtn);
   bookList.appendChild(bookRow);
 
-  showSuccessMessage();
-  clarForm();
+  showMessage("success", "책이 추가되었습니다");
+  clearForm();
 });
 
-function clarForm() {
+function clearForm() {
   const form = document.querySelector("form");
   form.reset();
 }
 
-bookList.addEventListener("click", deleteBook);
-
-function deleteBook(event) {
+bookList.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-btn")) {
     event.target.parentElement.remove();
-    showDeleteMessage();
+    showMessage("delete", "책이 삭제되었습니다");
   }
-}
+});
