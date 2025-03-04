@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>책</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>책</h1>
+
+    <div class="success-message">책이 추가되었습니다.</div>
+
+    <form id="book-form">
+      <label>책 이름</label>
+      <input type="text" id="book-name" required />
+
+      <label>책 저자</label>
+      <input type="text" id="book-author" required />
+
+      <button type="submit">제출</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>책 이름</th>
+          <th>책 저자</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="book-list">
+        <tr>
+          <td>책 이름1</td>
+          <td>책 저자1</td>
+          <td class="delete-btn">X</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
