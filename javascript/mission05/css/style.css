@@ -141,6 +141,7 @@ input {
 .blue { background: #3b82f6; }
 .gray { background: #6b7280; }
 .green { background: #10b981; }
+.teal { background: #14b8a6; }
 
 .info {
     list-style: none;
@@ -211,4 +212,15 @@ input {
     font-size: 14px;
     color: white;
     font-weight: bold;
+}
+
+.footer {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
