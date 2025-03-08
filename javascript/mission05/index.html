@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Finder</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css" />
+  <body>
+    <div class="header">GitHub Finder</div>
+
+    <div class="container">
+      <div class="error" style="display: none">User not found</div>
+
+      <div class="search-container">
+        <h2>Search GitHub Users</h2>
+        <p>Enter a username to fetch a user profile and repos</p>
+
+        <div class="search-box">
+          <input type="text" placeholder="Enter GitHub username" />
+        </div>
+      </div>
+
+      <div class="profile-container">
+        <div class="profile-container-inner">
+          <img id="profile-img" src="img/profile.JPG" alt="Profile Image" />
+          <div class="profile-details">
+            <div class="stats">
+              <span class="blue">Public Repos: 43</span>
+              <span class="gray">Public Gists: 31</span>
+              <span class="green">Followers: 100</span>
+              <span class="green">Following: 11</span>
+            </div>
+
+            <ul class="info">
+              <li class="info-details">
+                <div class="info-title">Company:</div>
+                <div class="info-contents">@andalways</div>
+              </li>
+              <li class="info-details">
+                <div class="info-title">Website/Blog:</div>
+                <div class="info-contents"><a href="#">jrdn.org</a></div>
+              </li>
+              <li class="info-details">
+                <div class="info-title">Location:</div>
+                <div class="info-contents">Diego, CA</div>
+              </li>
+              <li class="info-details">
+                <div>Member Since:</div>
+                <div class="info-contents">2015-01-01</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="profile-btn">View Profile</button>
+      </div>
+
+      <div class="repo-container">
+        <h2>Latest Repos</h2>
+
+        <div class="repo">
+          <a href="#">react-deploy-test</a>
+          <div class="repo-stats">
+            <span class="blue">Stars: 1</span>
+            <span class="gray">Watchers: 1</span>
+            <span class="green">Forks: 5</span>
+          </div>
+        </div>
+
+        <div class="repo">
+          <a href="#">react-disney-deploy-test</a>
+          <div class="repo-stats">
+            <span class="blue">Stars: 2</span>
+            <span class="gray">Watchers: 2</span>
+            <span class="green">Forks: 10</span>
+          </div>
+        </div>
+
+        <div class="repo">
+          <a href="#">react-tictactoe-deploy-test</a>
+          <div class="repo-stats">
+            <span class="blue">Stars: 1</span>
+            <span class="gray">Watchers: 1</span>
+            <span class="green">Forks: 3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
