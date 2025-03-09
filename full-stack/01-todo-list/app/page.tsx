@@ -1,5 +1,8 @@
 import Image from "next/image";
+import UI from "./ui";
 
 export default function Home() {
-  return <main>TODO List</main>
+  return <main>
+    <UI/>
+  </main>
 }
